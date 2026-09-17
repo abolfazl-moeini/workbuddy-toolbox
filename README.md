@@ -10,86 +10,54 @@
 
 ---
 
-## ⚡ Quick Start
+## ⚡ Quick Start (TL;DR)
 
+### 1. Install in 10 seconds
 ```bash
 git clone https://github.com/abolfazl-moeini/workbuddy-toolbox.git
 cd workbuddy-toolbox
-chmod +x wb-toolbox.sh
-./wb-toolbox.sh install
+chmod +x wb-toolbox.sh && ./wb-toolbox.sh install
 ```
+*(Installs the `wb` command globally in your PATH).*
 
-This installs `wb` globally in your PATH.
-
----
-
-## 🚀 Common Commands
-
-### 1. Recover / Merge All Chats
-Brings all conversations from previous accounts into the currently active session:
+### 2. Disappeared chats? Bring them all back:
 ```bash
 wb merge
 ```
-*Creates an automatic database backup before applying changes.*
+Close WorkBuddy AI, run `wb merge`, and relaunch. **All past conversations from every account will instantly reappear in your sidebar.**
 
-Options:
-* `wb merge --universal` : Makes all chats universally visible across any logged-in account.
-* `wb merge --restore-deleted` : Also unhides soft-deleted sessions.
-* `wb merge --force` : Automatically closes WorkBuddy if it is running.
-
----
-
-### 2. Multi-Account Switching
-Save profiles and switch between them instantly:
+### 3. Switch accounts with zero browser friction:
 ```bash
-# Save current logged-in account
-wb save personal
-
-# Save another account
-wb save work
-
-# List saved accounts
-wb list
-
-# Switch account (auto-syncs chat history)
-wb switch work
+wb save personal       # Save currently logged-in account
+wb save work           # Save a second account
+wb switch personal     # Jump between accounts instantly (chats stay merged!)
 ```
 
 ---
 
-### 3. Check Account & Session Status
+## 🚀 All Commands at a Glance
+
+### Recover / Merge Chat History
 ```bash
-wb status
+wb merge                     # Reassign all sessions to active account
+wb merge --universal         # Make chats visible to ANY account (shared mode)
+wb merge --restore-deleted   # Also unhide previously soft-deleted sessions
+wb merge --force             # Auto-close WorkBuddy before applying changes
 ```
 
-Example Output:
-```text
-=== WorkBuddy AI Status ===
-Application:      ○ Not running
-Login State:      Authenticated
-Active Email:     user@example.com
-User ID (UID):    xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-UIN:              100000000000
-Token Valid To:   2027-01-01 00:00:00
-
---- Chat History & Database ---
-Database Path:    ~/.workbuddy-ai/workbuddy.db
-Total Sessions:   30
-Visible to User:  30
-Hidden (Other UID): 0
-```
-
----
-
-### 4. Create an On-Demand Backup
+### Profile Management
 ```bash
-wb backup
+wb status                    # View active account, token expiration & session stats
+wb list                      # List all saved profiles
+wb save <name>               # Snapshot current credentials under a custom name
+wb switch <name>             # Switch active account and auto-sync history
+wb delete <name>             # Remove a saved profile
+wb backup                    # Create on-demand backup of database & auth files
 ```
-Snapshots your SQLite database and credentials to `~/.workbuddy-toolbox/backups/`.
 
 ---
 
-## 🛠️ Command Cheat Sheet
+## 🛠️ Cheat Sheet
 
 | Command | Alias | What It Does |
 | :--- | :--- | :--- |
@@ -103,13 +71,32 @@ Snapshots your SQLite database and credentials to `~/.workbuddy-toolbox/backups/
 
 ---
 
-## 🇮🇷 خلاصه به فارسی (TL;DR)
+## 🇮🇷 راهنمای سریع (TL;DR فارسی)
 
-ورک‌بادی بعد از خروج یا تغییر اکانت، تاریخچه چت‌ها را پاک نمی‌کند، بلکه آن‌ها را بر اساس `userId` فیلتر و مخفی می‌کند.
+### ۱. نصب:
+```bash
+git clone https://github.com/abolfazl-moeini/workbuddy-toolbox.git
+cd workbuddy-toolbox
+chmod +x wb-toolbox.sh && ./wb-toolbox.sh install
+```
 
-* **`wb merge`**: تمام چت‌های قبلی را به اکانت فعال متصل می‌کند تا همگی در سایدبار ظاهر شوند.
-* **`wb switch <name>`**: سوئیچ فوری بین اکانت‌ها بدون نیاز به لاگین در مرورگر.
-* **`wb status`**: نمایش اطلاعات اکانت، وضعیت توکن و تعداد چت‌های موجود.
+### ۲. برگرداندن فوری تمام چت‌ها در اکانت فعال:
+اگر لاگ‌اوت کردید یا اکانت را تغییر دادید و چت‌های قبلی غیب شدند:
+```bash
+wb merge
+```
+برنامه را باز کنید؛ تمام تاریخچه‌ها بازگشته‌اند!
+
+### ۳. جابجایی بین چند اکانت بدون باز کردن مرورگر:
+```bash
+wb save personal      # ذخیره اکانت فعلی با نام دلخواه
+wb switch work        # سوئیچ آنی به اکانت دیگر (چت‌ها حفظ و ادغام می‌شوند)
+```
+
+### ۴. وضعیت اکانت و توکن:
+```bash
+wb status             # مشاهده ایمیل فعال، تاریخ انقضای توکن و تعداد سشن‌ها
+```
 
 ---
 
